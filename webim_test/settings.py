@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'captcha',
     'randint_generator.apps.RandintGeneratorConfig',
-    'background_task',
 ]
 
 MIDDLEWARE = [
