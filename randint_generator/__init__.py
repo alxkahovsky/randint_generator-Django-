@@ -1,0 +1,1 @@
+default_app_config = 'randint_generator.apps.RandintGeneratorConfig'

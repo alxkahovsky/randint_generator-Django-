@@ -1,3 +1,11 @@
 from django.contrib import admin
+from django.conf import settings
 
-# Register your models here.
+from .models import RandomInt
+
+
+# Таблица кастомизации профиля пользователя:
+@admin.register(RandomInt)
+class AccountAdmin(admin.ModelAdmin):
+    fields = ['random_number', 'created']
+    list_display = ['random_number', 'created']

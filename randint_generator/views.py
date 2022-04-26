@@ -1,6 +1,25 @@
-from django.shortcuts import render
-from django.views.generic import TemplateView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import render, get_object_or_404, redirect
+from django.http import JsonResponse, HttpResponse
+import random
+import time
+from threading import Timer
+from .models import RandomInt
 
-class HomeView(LoginRequiredMixin, TemplateView):
-    template_name = "home.html"
+
+def show_randint(request):
+    # if request.user.is_authenticated:
+    # #     if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+    # #         number = 0
+    # #         rand_number = number
+    # #         while number == rand_number:
+    # #             rand_number = random.randint(0, 9999999)
+    # #         return JsonResponse({'rand_number': rand_number}, status=200)
+    # # else:
+    # #     context = {
+    # #         'number': 'Для отображения случайного числа необходимо авторизоваться'
+    # #     }
+    context = {
+        'number': 'sync()'
+    }
+    return render(request, 'randint_generator/randint_generator.html', context)
+

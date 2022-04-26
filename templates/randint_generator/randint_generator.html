@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}лучайное число{% endblock title %}
+
+{% block content %}
+<!-- register done -->
+<section class="emty_cart_area p_100">
+    <div class="container">
+        <div class="emty_cart_inner">
+            <h3 id="my-number"> {{ number }}</h3>
+            <h3> {{ number }}</h3>
+        </div>
+    </div>
+</section>
+<script type="text/javascript">
+$(document).ready(function () {
+    setInterval(function() {
+        $.ajax({
+            url: {% url 'randint_generator:index' %} ,
+            success: function (response) {
+                $('#my-number').empty();
+                $('#my-number').append(response.rand_number);
+            },
+            error: function (response) {
+                alert(response.responseJSON.errors);
+                console.log(response.responseJSON.errors)
+            }
+        });
+    }, 5000);
+})
+
+
+</script>
+{% endblock %}
