@@ -3,6 +3,9 @@
 
 {% block content %}
 <!-- login -->
+{% if user.is_authenticated %}
+<p>already</p>
+{% else %}
 <section class="login_area p_100">
     <div class="container">
         <div class="login_inner">
@@ -43,4 +46,5 @@
     </div>
 <a href="{% url 'social:begin' 'github' %}">Login with Github</a> <br/>
 </section>
+{% endif %}
 {% endblock content %}

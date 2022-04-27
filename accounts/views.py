@@ -35,4 +35,4 @@ def register(request):
         }
         return render(request, 'accounts/registration.html', context)
     else:
-        return redirect('randint_generator:index')
+        return redirect('randint_generator:home')

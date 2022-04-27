@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}лучайное число{% endblock title %}
+{% block title %}Cлучайное число для {{ username }}{% endblock title %}
 
 {% block content %}
 <section>
@@ -7,30 +7,38 @@
         <div>
             {% if not login %}
             <h3 id>Необходимо авторизоваться!</h3>
+            <a href="{% url 'accounts:login' %}">Вход</a>
+            <a href="{% url 'accounts:register' %}">Регистрация</a> <br/>
             <h5>или</h5>
             <a href="{% url 'social:begin' 'github' %}">Login with Github</a> <br/>
             {% else %}
-            <h2 id="username"> {{ username }} </h2>
-            <h3 id="my-number"> {{ number }} </h3>
+            <h2 id="username" style="display: inline"> {{ username }}, Ваше случайное число: </h2>
+            <h3 id="my-number" style="display: inline; color: red"> {{ number }} </h3>
+            <div>
+                <a href="{% url 'accounts:logout' %}">Выход</a> <br/>
+            </div>
             {% endif %}
         </div>
     </div>
 </section>
+{% if login %}
 <script type="text/javascript">
 $(document).ready(function () {
     setInterval(function() {
         $.ajax({
             url: '',
             success: function (response) {
-                $('#my-number').empty();
-                $('#my-number').append(response.rand_number);
+                if (Number($('#my-number').text()) != response.rand_number) {
+                    $('#my-number').text(response.rand_number);
+                }
             },
             error: function (response) {
                 alert(response.responseJSON.errors);
                 console.log(response.responseJSON.errors)
             }
         });
-    }, 5000);
+    }, 500);
 })
 </script>
+{% endif %}
 {% endblock %}

@@ -8,4 +8,4 @@ from .models import RandomInt
 @admin.register(RandomInt)
 class AccountAdmin(admin.ModelAdmin):
     fields = ['random_number', 'created']
-    list_display = ['random_number', 'created']
+    list_display = ['id', 'random_number', 'created']
