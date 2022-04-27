@@ -10,5 +10,4 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(next_page='randint_generator:index'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(next_page='accounts:login'), name='logout'),
     path('register/', views.register, name='register'),
-
     ]

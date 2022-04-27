@@ -2,12 +2,17 @@
 {% block title %}лучайное число{% endblock title %}
 
 {% block content %}
-<!-- register done -->
-<section class="emty_cart_area p_100">
+<section>
     <div class="container">
-        <div class="emty_cart_inner">
-            <h3 id="my-number"> {{ number }}</h3>
-            <h3> {{ number }}</h3>
+        <div>
+            {% if not login %}
+            <h3 id>Необходимо авторизоваться!</h3>
+            <h5>или</h5>
+            <a href="{% url 'social:begin' 'github' %}">Login with Github</a> <br/>
+            {% else %}
+            <h2 id="username"> {{ username }} </h2>
+            <h3 id="my-number"> {{ number }} </h3>
+            {% endif %}
         </div>
     </div>
 </section>
@@ -15,7 +20,7 @@
 $(document).ready(function () {
     setInterval(function() {
         $.ajax({
-            url: {% url 'randint_generator:index' %} ,
+            url: '',
             success: function (response) {
                 $('#my-number').empty();
                 $('#my-number').append(response.rand_number);
@@ -27,7 +32,5 @@ $(document).ready(function () {
         });
     }, 5000);
 })
-
-
 </script>
 {% endblock %}

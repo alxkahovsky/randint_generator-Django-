@@ -1,12 +1,11 @@
 {% extends 'base.html' %}
-{% block title %}Добро пожаловать!{% endblock title %}
+{% block title %}Регистрация завершена{% endblock title %}
 
 {% block content %}
 <!-- register done -->
-<section class="emty_cart_area p_100">
+<section>
     <div class="container">
-        <div class="emty_cart_inner">
-            <i class="icon-user icons"></i>
+        <div>
             <h3> {{ new_user }} регистрация аккаунта прошла успешно</h3>
             <h4>теперь Вы в него можете <a href="{% url 'accounts:login' %}">зайти</a></h4>
         </div>
