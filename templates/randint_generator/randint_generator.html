@@ -28,6 +28,7 @@ $(document).ready(function () {
         $.ajax({
             url: '',
             success: function (response) {
+                console.log(response.rand_number)
                 if (Number($('#my-number').text()) != response.rand_number) {
                     $('#my-number').text(response.rand_number);
                 }
