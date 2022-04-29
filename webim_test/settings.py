@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-4%2z351*dzywu2%c-+x)^0hn0c%6wx15pj5k7bry_^6@l8!3p%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -86,8 +86,8 @@ LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 LOGIN_REDIRECT_URL = 'randint_generator:home'
 
-SOCIAL_AUTH_GITHUB_KEY = '97807f349f814960ac80'
-SOCIAL_AUTH_GITHUB_SECRET = 'd8d721a6f3cf5dd26bbd581473fa40dfc65f6ddf'
+SOCIAL_AUTH_GITHUB_KEY = 'fceed540dc37c31c2dec'
+SOCIAL_AUTH_GITHUB_SECRET = '2ed6ed0eda7a4e199c3609a456831e647a80472b'
 
 WSGI_APPLICATION = 'webim_test.wsgi.application'
 
@@ -142,6 +142,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
